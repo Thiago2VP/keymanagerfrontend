@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
 import * as colors from '../config/colors';
+import '../assets/styles/projectStyles.css';
 
 export default createGlobalStyle`
   * {
@@ -14,8 +15,13 @@ export default createGlobalStyle`
     height: 100%;
     scroll-behavior: smooth;
     font-size: 62.5%;
+    font-family: 'Ubuntu', sans-serif;
     background-color: ${colors.secondaryColor};
     color: ${colors.primaryColor};
+  }
+
+  body {
+    position: relative;
   }
 
   button {
@@ -39,13 +45,13 @@ export default createGlobalStyle`
 
   body .Toastify .Toastify__toast-container .Toastify__toast--success {
     background: ${colors.successColor};
-    color: ${colors.primaryColor};
+    color: ${colors.secondaryColor};
     font-size: 1.6rem;
   }
 
   body .Toastify .Toastify__toast-container .Toastify__toast--error {
     background: ${colors.errorColor};
-    color: ${colors.primaryColor};
+    color: ${colors.secondaryColor};
     font-size: 1.6rem;
   }
 `;
@@ -53,15 +59,15 @@ export default createGlobalStyle`
 export const Container = styled.main`
   max-width: 1200px;
   margin: auto;
-  padding: 30px;
+  padding: 10px;
 
   @media (max-width: 420px) {
-    padding: 10px;
+    padding: 5px;
   }
 `;
 
 export const Main = styled.main`
-  min-height: 72vh;
+  min-height: 100vh;
   margin: auto;
 `;
 
