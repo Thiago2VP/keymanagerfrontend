@@ -31,35 +31,40 @@ function persistRehydrate({ payload }) {
 
 // eslint-disable-next-line consistent-return
 function* registerRequest({ payload }) {
-  const { id, nome, email, password, history } = payload;
+  const { id, name, email, password, history } = payload;
 
   try {
     if (id) {
       yield call(axios.put, '/users', {
         email,
-        nome,
+        name,
         password: password || undefined,
       });
       toast.success('Conta alterada com sucesso!');
-      yield put(actions.registerUpdatedSuccess({ nome, email, password }));
+      yield put(actions.registerUpdatedSuccess({ name, email, password }));
     } else {
       yield call(axios.post, '/users', {
         email,
-        nome,
+        name,
         password,
       });
       toast.success('Conta criada com sucesso!');
-      yield put(actions.registerCreatedSuccess({ nome, email, password }));
+      yield put(actions.registerCreatedSuccess({ name, email, password }));
       history.push('/login');
     }
   } catch (e) {
     const errors = get(e, 'response.data.errors', []);
     const status = get(e, 'response.status', 0);
 
-    if (status === 401) {
+    if (id && status === 401) {
       toast.error('Você precisa fazer login novamente.');
       yield put(actions.loginFailure());
       return history.push('/login');
+    }
+
+    if (!id && status === 401) {
+      toast.error('Email existe.');
+      return history.push('/register');
     }
 
     if (errors.length > 0) {

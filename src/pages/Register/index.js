@@ -13,12 +13,12 @@ export default function Register(props) {
   const dispatch = useDispatch();
 
   const id = useSelector((state) => state.auth.user.id);
-  const nomeStored = useSelector((state) => state.auth.user.nome);
+  const nameStored = useSelector((state) => state.auth.user.name);
   const emailStored = useSelector((state) => state.auth.user.email);
   const isLoading = useSelector((state) => state.auth.isLoading);
   const { history } = props;
 
-  const [nome, setNome] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repassword, setRepassword] = useState('');
@@ -27,16 +27,16 @@ export default function Register(props) {
   React.useEffect(() => {
     if (!id) return;
 
-    setNome(nomeStored);
+    setName(nameStored);
     setEmail(emailStored);
-  }, [emailStored, id, nomeStored]);
+  }, [emailStored, id, nameStored]);
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     let formErrors = false;
 
-    if (nome.length < 3 || nome.length > 255) {
+    if (name.length < 3 || name.length > 255) {
       formErrors = true;
       toast.error('Nome deve ter entre 3 e 255 caracteres');
     }
@@ -58,7 +58,7 @@ export default function Register(props) {
 
     if (formErrors) return;
 
-    dispatch(actions.registerRequest({ nome, email, password, id, history }));
+    dispatch(actions.registerRequest({ name, email, password, id, history }));
 
     if (email !== emailOld) {
       toast.success('Email Alterado');
@@ -75,9 +75,9 @@ export default function Register(props) {
         <MainTittle>{id ? 'Editar dados' : 'Crie sua conta'}</MainTittle>
 
         <Form onSubmit={handleSubmit}>
-          <label htmlFor="nome">
+          <label htmlFor="name">
             Nome:
-            <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Obrigatório" />
+            <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Obrigatório" />
           </label>
 
           <label htmlFor="email">

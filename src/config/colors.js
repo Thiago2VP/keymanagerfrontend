@@ -6,3 +6,5 @@ export const successColor = '#8CD966';
 export const infoColor = '#71B0D9';
 export const errorColor = '#DB7B69';
 export const warningColor = '#D9BE5B';
+
+export const dangerColor = '#8F1818';

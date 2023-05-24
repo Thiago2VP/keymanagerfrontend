@@ -11,6 +11,7 @@ export const SectionLogin = styled.section`
 
 export const QuestionRegist = styled.div`
   margin-top: 8rem;
+  margin-bottom: 2rem;
   display: flex;
   align-itens: center;
   justify-content: center;

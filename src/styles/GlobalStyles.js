@@ -72,8 +72,12 @@ export const Main = styled.main`
 `;
 
 export const MainTittle = styled.h1`
-  font-size: 5.3rem;
+  font-size: 4.6rem;
   color: ${colors.primaryColor};
+
+  @media (max-width: 300px) {
+    font-size: 3.4rem;
+  }
 `;
 
 export const SpecialParagraph = styled.p`
