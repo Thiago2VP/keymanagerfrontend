@@ -1,5 +1,5 @@
 <h2>Key Manager</h2>
-<p>Regist your account information and see everwhere</p>
+<p>Frontend para uma API também pública para armazenar senhas que pode ser vista <a href="https://github.com/Thiago2VP/keymanagerbackend">aqui</a></p>
 <br>
 <img src="https://raw.githubusercontent.com/Thiago2VP/keymanagerfrontend/master/assets/0-registro.jpg">
 <br>
